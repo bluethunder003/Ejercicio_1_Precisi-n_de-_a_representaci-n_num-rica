@@ -1,0 +1,31 @@
+git remote add origin https://github.com/bluethunder003/Ejercicio_1_Precisi-n_de-_a_representaci-n_num-rica.git
+git branch -M main
+git push -u origin main
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+epsilon = 1.0
+iteracion = 0
+iteraciones = []
+valores_epsilon = []
+
+while 1.0 + epsilon != 1.0:
+    epsilon /= 2
+    iteracion += 1
+    iteraciones.append(iteracion)
+    valores_epsilon.append(epsilon)
+    print(f"Iteración: {iteracion}, Precisión de máquina: {epsilon}")
+
+# Restaurar el último valor válido de epsilon
+epsilon *= 2
+print(f"Precisión de máquina final: {epsilon}")
+
+# Graficar los valores de epsilon en cada iteración
+plt.figure(figsize=(10, 5))
+plt.bar(iteraciones, valores_epsilon, color='blue', alpha=0.7)
+plt.xlabel("Iteración")
+plt.ylabel("Valor de Epsilon")
+plt.title("Evolución de la Precisión de Máquina")
+plt.yscale("log")  # Escala logarítmica para visualizar mejor los valores pequeños
+plt.show()
